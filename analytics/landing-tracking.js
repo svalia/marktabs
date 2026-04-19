@@ -84,7 +84,10 @@
 
                 var installId = getOrCreateInstallId();
                 var utmParams = captureUtmParams();
-                amplitude.setUserProperties(Object.assign({ install_id: installId }, utmParams));
+                var identify = new amplitude.Identify();
+                identify.set("install_id", installId);
+                Object.keys(utmParams).forEach(function (k) { identify.set(k, utmParams[k]); });
+                amplitude.identify(identify);
             }
         }
 
