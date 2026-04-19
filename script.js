@@ -189,6 +189,11 @@ function applyLang(lang) {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
 
+  const ruLinks = document.getElementById('footer-links-ru');
+  const enLinks = document.getElementById('footer-links-en');
+  if (ruLinks) ruLinks.style.display = lang === 'ru' ? '' : 'none';
+  if (enLinks) enLinks.style.display = lang === 'en' ? '' : 'none';
+
   try { localStorage.setItem('mt_lang', lang); } catch (_) {}
 }
 

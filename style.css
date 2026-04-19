@@ -1049,6 +1049,26 @@ code, .md-code {
   color: var(--fg3);
 }
 
+.footer.footer-main {
+  flex-wrap: wrap;
+  gap: 12px 0;
+}
+
+.footer.footer-main .footer-legal-nav {
+  flex: 1 1 100%;
+  order: 2;
+  padding-top: 12px;
+  border-top: 1px solid var(--border2);
+}
+
+.footer.footer-main .footer-copy {
+  order: 3;
+}
+
+.footer.footer-main .logo {
+  order: 1;
+}
+
 /* =============================================
    ANIMATIONS
    ============================================= */
