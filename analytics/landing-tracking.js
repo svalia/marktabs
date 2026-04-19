@@ -72,30 +72,34 @@
     // INIT
     // =========================================================================
 
-    function init() {
-        // Amplitude: инициализация SDK (только если включён и загружен)
-        if (PROVIDERS.amplitude.enabled) {
-            if (typeof amplitude === "undefined") {
-                console.warn("[MarkTabs Analytics] Amplitude SDK not loaded.");
-            } else {
-                amplitude.init(PROVIDERS.amplitude.apiKey, null, {
-                    defaultTracking: { pageViews: false, sessions: false, formInteractions: false, fileDownloads: false }
-                });
-
-                var installId = getOrCreateInstallId();
-                var utmParams = captureUtmParams();
-                var identify = new amplitude.Identify();
-                identify.set("install_id", installId);
-                Object.keys(utmParams).forEach(function (k) { identify.set(k, utmParams[k]); });
-                amplitude.identify(identify);
-            }
+    // Dynamically loads Amplitude SDK then initialises tracking.
+    // Called by cookie-consent.js when analytics consent is given.
+    window.loadAnalytics = function () {
+        if (typeof amplitude !== "undefined") {
+            runAmplitude();
+            return;
         }
+        var s = document.createElement("script");
+        s.src = "https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz";
+        s.onload = runAmplitude;
+        document.head.appendChild(s);
+    };
 
-        // Остальные провайдеры (YM, GA4) инициализируются своими сниппетами в <head>.
-
+    function runAmplitude() {
+        if (!PROVIDERS.amplitude.enabled) return;
+        amplitude.init(PROVIDERS.amplitude.apiKey, null, {
+            defaultTracking: { pageViews: false, sessions: false, formInteractions: false, fileDownloads: false }
+        });
+        var installId = getOrCreateInstallId();
         var utmParams = captureUtmParams();
-
+        var identify = new amplitude.Identify();
+        identify.set("install_id", installId);
+        Object.keys(utmParams).forEach(function (k) { identify.set(k, utmParams[k]); });
+        amplitude.identify(identify);
         trackPageView(utmParams);
+    }
+
+    function init() {
         trackLanguageDetection();
         bindNav();
         bindHero();
@@ -104,7 +108,17 @@
         bindFaq();
         bindDownloadSection();
         bindScrollSections();
+
+        // Load analytics if consent was already given before this page load
+        if (window.CookieConsent && window.CookieConsent.hasAnalytics()) {
+            window.loadAnalytics();
+        }
     }
+
+    // Load analytics if consent is given during this page session (via banner)
+    document.addEventListener("analytics:consent", function () {
+        window.loadAnalytics();
+    });
 
     // =========================================================================
     // HELPERS

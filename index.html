@@ -16,8 +16,7 @@
        После этого поставь enabled: true в analytics/landing-tracking.js
        ========================================================= -->
 
-  <!-- Amplitude Browser SDK (включён по умолчанию) -->
-  <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
+  <!-- Amplitude SDK загружается динамически только после согласия (см. cookie-consent.js) -->
 
   <!-- Яндекс.Метрика
        1. Замени XXXXXXXX на свой ID счётчика
@@ -668,16 +667,19 @@
         <a href="legal/cookies/">Политика cookie</a>
         <a href="legal/consent/">Согласие на обработку ПДн</a>
         <a href="legal/eula/">Лицензионное соглашение</a>
+        <a href="#" class="footer-cookie-settings" onclick="window.CookieConsent&&window.CookieConsent.openSettings();return false;">Настройки cookie</a>
       </div>
       <div class="footer-legal-links" id="footer-links-en" style="display:none">
         <a href="legal/terms/">Terms of Use</a>
         <a href="legal/privacy/">Privacy Policy</a>
         <a href="legal/cookies/">Cookie Policy</a>
         <a href="legal/eula/">End User License Agreement</a>
+        <a href="#" class="footer-cookie-settings" onclick="window.CookieConsent&&window.CookieConsent.openSettings();return false;">Cookie settings</a>
       </div>
     </div>
   </footer>
 
+  <script src="cookie-consent.js"></script>
   <script src="script.js"></script>
   <script src="analytics/landing-tracking.js"></script>
 </body>
