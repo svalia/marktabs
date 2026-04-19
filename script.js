@@ -83,6 +83,7 @@ const T = {
     dl_sub:        'Бесплатно. Нативный macOS. Без аккаунта.',
     dl_cta:        'Скачать MarkTabs',
     dl_meta:       'macOS 13 Ventura и выше · DMG · ~8 MB',
+    dl_disclaimer: 'Нажимая «Скачать», вы принимаете условия <a href="legal/eula/">Лицензионного соглашения</a> и <a href="legal/privacy/">Политики конфиденциальности</a>.',
     footer_copy:   '© 2026 MarkTabs. Сделано на macOS, для macOS.',
   },
   en: {
@@ -160,6 +161,7 @@ const T = {
     dl_sub:        'Free. Native macOS. No account.',
     dl_cta:        'Download MarkTabs',
     dl_meta:       'macOS 13 Ventura and above · DMG · ~8 MB',
+    dl_disclaimer: 'By clicking "Download", you accept the terms of the <a href="legal/eula/">End User License Agreement</a> and the <a href="legal/privacy/">Privacy Policy</a>.',
     footer_copy:   '© 2026 MarkTabs. Built on macOS, for macOS.',
   }
 };

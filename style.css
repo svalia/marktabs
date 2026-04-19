@@ -1031,6 +1031,21 @@ code, .md-code {
   color: var(--fg3);
 }
 
+.dl-disclaimer {
+  font-size: 11px;
+  color: var(--fg3);
+  margin: 0;
+  line-height: 1.5;
+}
+.dl-disclaimer a {
+  color: var(--fg3);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.dl-disclaimer a:hover {
+  color: var(--fg2);
+}
+
 /* =============================================
    FOOTER
    ============================================= */
