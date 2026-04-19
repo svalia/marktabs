@@ -1,0 +1,28 @@
+MarkTabs — Proprietary Freeware License
+Copyright (c) 2026 MarkTabs. All rights reserved.
+
+PERMISSION IS GRANTED, FREE OF CHARGE, TO ANY PERSON OBTAINING A COPY
+OF THIS SOFTWARE (THE "SOFTWARE"), TO USE THE SOFTWARE FOR PERSONAL
+AND COMMERCIAL PURPOSES (INCLUDING USE BY EMPLOYEES WITHIN
+ORGANIZATIONS) AND TO DISTRIBUTE UNMODIFIED COPIES OF THE ORIGINAL
+INSTALLER, PROVIDED THAT A LINK TO THE OFFICIAL WEBSITE IS INCLUDED.
+
+THE FOLLOWING ARE STRICTLY PROHIBITED:
+
+  — Selling the Software or distributing it for any fee;
+  — Modifying, decompiling, disassembling, or reverse engineering the
+    Software, except as permitted by applicable law;
+  — Removing or altering copyright notices or trademarks;
+  — Incorporating the Software or any part thereof into other products.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Full terms (EULA): https://svalia.github.io/marktabs/en/legal/eula
+Privacy Policy:    https://svalia.github.io/marktabs/en/legal/privacy
+Contact:           taxers.59botanic@icloud.com

@@ -1,0 +1,7 @@
+{
+  "version": "1.0.0",
+  "releaseDate": "2026-04-19",
+  "releaseNotesRu": "Первый релиз MarkTabs. Вкладки, Read mode, Sidebar, автосохранение и встроенный MCP-сервер для Claude.",
+  "releaseNotesEn": "First release of MarkTabs. Tabs, Read mode, Sidebar, autosave, and built-in MCP server for Claude.",
+  "downloadUrl": "https://svalia.github.io/marktabs/downloads/MarkTabs-1.0.0.dmg"
+}

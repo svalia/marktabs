@@ -1,0 +1,18 @@
+{
+  "announcements": [
+    {
+      "id": "2026-04-19-welcome",
+      "date": "2026-04-19",
+      "title": "Welcome to MarkTabs 1.0",
+      "body": "MarkTabs is now available! Tabs, Read mode, Sidebar, autosave, and built-in MCP server for Claude. Download the latest version from our website.",
+      "title_ru": "Добро пожаловать в MarkTabs 1.0",
+      "body_ru": "MarkTabs теперь доступен! Вкладки, Read mode, Sidebar, автосохранение и встроенный MCP-сервер для Claude. Скачайте последнюю версию с нашего сайта.",
+      "image_url": null,
+      "cta_label": "Visit website",
+      "cta_label_ru": "Открыть сайт",
+      "cta_url": "https://svalia.github.io/marktabs",
+      "min_version": "1.0",
+      "max_version": null
+    }
+  ]
+}

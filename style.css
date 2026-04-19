@@ -2404,3 +2404,157 @@ code, .md-code {
   .feature-item { flex-direction: column; align-items: flex-start; gap: 20px; }
   .feature-anim { width: 100%; max-width: 340px; }
 }
+
+
+/* =============================================
+   LEGAL PAGES
+   ============================================= */
+
+.legal-page {
+  padding: 60px 0 80px;
+  min-height: 70vh;
+}
+
+.legal-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.legal-breadcrumb {
+  margin-bottom: 32px;
+}
+
+.legal-breadcrumb a {
+  color: var(--fg2);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.legal-breadcrumb a:hover {
+  color: var(--fg1);
+}
+
+.legal-pdf-bar {
+  margin-bottom: 24px;
+}
+
+.pdf-download {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--fg2);
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.pdf-download:hover {
+  border-color: var(--head);
+  color: var(--head);
+}
+
+.legal-body h1 {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  color: var(--fg1);
+}
+
+.legal-body h2 {
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  color: var(--fg1);
+}
+
+.legal-body h3 {
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  color: var(--fg1);
+}
+
+.legal-body p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--fg2);
+  margin-bottom: 12px;
+}
+
+.legal-body ul {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+.legal-body ul li {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--fg2);
+  margin-bottom: 4px;
+  list-style: none;
+}
+
+.legal-body ul li::before {
+  content: "— ";
+  color: var(--fg3);
+}
+
+.legal-body a {
+  color: var(--head);
+  text-decoration: none;
+}
+
+.legal-body a:hover {
+  text-decoration: underline;
+}
+
+.legal-other-docs {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--fg2);
+}
+
+.legal-other-docs a {
+  display: inline-block;
+  margin-right: 16px;
+  margin-top: 8px;
+  color: var(--fg2);
+  text-decoration: none;
+}
+
+.legal-other-docs a:hover {
+  color: var(--fg1);
+}
+
+/* Footer with legal links */
+.footer.footer-legal {
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.footer-legal-nav {
+  font-size: 12px;
+}
+
+.footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+}
+
+.footer-legal-links a {
+  color: var(--fg3);
+  text-decoration: none;
+}
+
+.footer-legal-links a:hover {
+  color: var(--fg2);
+}
