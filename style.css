@@ -1060,7 +1060,7 @@ code, .md-code {
 }
 
 .footer-copy {
-  font-size: 20px;
+  font-size: 13px;
   color: var(--fg3);
 }
 
@@ -1092,7 +1092,7 @@ code, .md-code {
 }
 
 .footer-bottom .footer-legal-links a {
-  font-size: 18px;
+  font-size: 12px;
   color: var(--fg3);
   text-decoration: none;
 }
@@ -2599,7 +2599,7 @@ code, .md-code {
 }
 
 .footer-legal-nav {
-  font-size: 18px;
+  font-size: 12px;
 }
 
 .footer-legal-links {
@@ -2646,7 +2646,7 @@ code, .md-code {
 
 .ck-banner-text {
   flex: 1;
-  font-size: 20px;
+  font-size: 13px;
   color: var(--fg2);
   margin: 0;
   line-height: 1.5;
@@ -2662,7 +2662,7 @@ code, .md-code {
 /* Buttons */
 .ck-btn {
   font-family: var(--font-mono);
-  font-size: 18px;
+  font-size: 12px;
   padding: 8px 14px;
   border-radius: 6px;
   cursor: pointer;
@@ -2698,7 +2698,7 @@ code, .md-code {
   background: none;
   border: none;
   color: var(--fg3);
-  font-size: 27px;
+  font-size: 18px;
   cursor: pointer;
   line-height: 1;
   padding: 2px 6px;
@@ -2742,7 +2742,7 @@ code, .md-code {
 }
 
 .ck-modal-title {
-  font-size: 22px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--head);
   margin: 0;
@@ -2778,14 +2778,14 @@ code, .md-code {
 }
 
 .ck-cat-info h3 {
-  font-size: 20px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--fg);
   margin: 0 0 6px;
 }
 
 .ck-cat-info p {
-  font-size: 18px;
+  font-size: 12px;
   color: var(--fg3);
   margin: 0;
   line-height: 1.5;
@@ -2793,7 +2793,7 @@ code, .md-code {
 
 .ck-always-on {
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: 11px;
   color: #34d399;
   white-space: nowrap;
   flex-shrink: 0;
