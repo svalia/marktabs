@@ -74,7 +74,7 @@ a:hover { text-decoration: underline; }
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 21px;
+  font-size: 14px;
   color: var(--fg);
   letter-spacing: -0.01em;
   text-decoration: none;
@@ -96,7 +96,7 @@ a:hover { text-decoration: underline; }
 }
 
 .nav a {
-  font-size: 20px;
+  font-size: 13px;
   color: var(--fg2);
   text-decoration: none;
   transition: color 0.2s;
@@ -110,7 +110,7 @@ a:hover { text-decoration: underline; }
   color: #042f1e !important;
   border-radius: 5px;
   font-weight: 600;
-  font-size: 20px !important;
+  font-size: 13px !important;
   transition: opacity 0.2s !important;
 }
 
@@ -129,7 +129,7 @@ a:hover { text-decoration: underline; }
   color: var(--fg3);
   cursor: pointer;
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: 11px;
   padding: 3px 6px;
   border-radius: 3px;
   transition: color 0.2s;
@@ -138,7 +138,7 @@ a:hover { text-decoration: underline; }
 
 .lang-btn:hover { color: var(--fg); }
 .lang-btn.active { color: var(--head); }
-.lang-sep { color: var(--border); font-size: 16px; }
+.lang-sep { color: var(--border); font-size: 11px; }
 
 /* =============================================
    DOCUMENT — main content wrapper
