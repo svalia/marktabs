@@ -74,7 +74,10 @@
 
     // Dynamically loads all enabled analytics providers after consent.
     // Called by cookie-consent.js. Never call before user consent.
+    var _analyticsLoaded = false;
     window.loadAnalytics = function () {
+        if (_analyticsLoaded) return;
+        _analyticsLoaded = true;
         loadAmplitude();
         loadYandexMetrica();
         loadGoogleAnalytics();

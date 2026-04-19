@@ -1,7 +1,8 @@
 (function () {
 
     var CONSENT_VERSION = 1;
-    var STORAGE_KEY = 'cookieConsent';
+
+    function storageKey() { return 'cookieConsent_' + lang; }
 
     // =========================================================================
     // I18N
@@ -47,7 +48,7 @@
 
     function getConsent() {
         try {
-            var raw = localStorage.getItem(STORAGE_KEY);
+            var raw = localStorage.getItem(storageKey());
             if (!raw) return null;
             var obj = JSON.parse(raw);
             if (obj.version !== CONSENT_VERSION) return null;
@@ -57,7 +58,7 @@
 
     function setConsent(choice) {
         try {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            localStorage.setItem(storageKey(), JSON.stringify({
                 version: CONSENT_VERSION,
                 choice: choice,
                 timestamp: new Date().toISOString()
@@ -79,6 +80,16 @@
         openSettings: function () {
             if (document.readyState !== 'loading') showModal();
             else document.addEventListener('DOMContentLoaded', showModal);
+        },
+        checkLang: function (newLang) {
+            lang = newLang;
+            hideBanner();
+            var c = getConsent();
+            if (!c) {
+                showBanner();
+            } else if (hasAnalytics()) {
+                if (typeof window.loadAnalytics === 'function') window.loadAnalytics();
+            }
         }
     };
 

@@ -197,6 +197,8 @@ function applyLang(lang) {
   if (enLinks) enLinks.style.display = lang === 'en' ? 'flex' : 'none';
 
   try { localStorage.setItem('mt_lang', lang); } catch (_) {}
+
+  if (window.CookieConsent) window.CookieConsent.checkLang(lang);
 }
 
 async function detectLang() {
