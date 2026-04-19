@@ -72,18 +72,22 @@
     // INIT
     // =========================================================================
 
-    // Dynamically loads Amplitude SDK then initialises tracking.
-    // Called by cookie-consent.js when analytics consent is given.
+    // Dynamically loads all enabled analytics providers after consent.
+    // Called by cookie-consent.js. Never call before user consent.
     window.loadAnalytics = function () {
-        if (typeof amplitude !== "undefined") {
-            runAmplitude();
-            return;
-        }
+        loadAmplitude();
+        loadYandexMetrica();
+        loadGoogleAnalytics();
+    };
+
+    function loadAmplitude() {
+        if (!PROVIDERS.amplitude.enabled) return;
+        if (typeof amplitude !== "undefined") { runAmplitude(); return; }
         var s = document.createElement("script");
         s.src = "https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz";
         s.onload = runAmplitude;
         document.head.appendChild(s);
-    };
+    }
 
     function runAmplitude() {
         if (!PROVIDERS.amplitude.enabled) return;
@@ -97,6 +101,34 @@
         Object.keys(utmParams).forEach(function (k) { identify.set(k, utmParams[k]); });
         amplitude.identify(identify);
         trackPageView(utmParams);
+    }
+
+    function loadYandexMetrica() {
+        if (!PROVIDERS.yandexMetrica.enabled || !PROVIDERS.yandexMetrica.counterId) return;
+        if (typeof ym !== "undefined") return;
+        var counterId = PROVIDERS.yandexMetrica.counterId;
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t); a = e.getElementsByTagName(t)[0];
+            k.async = 1; k.src = r; a.parentNode.insertBefore(k, a);
+        })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        ym(counterId, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true });
+    }
+
+    function loadGoogleAnalytics() {
+        if (!PROVIDERS.googleAnalytics.enabled || PROVIDERS.googleAnalytics.measurementId === "G-XXXXXXXXXX") return;
+        if (typeof gtag !== "undefined") return;
+        var id = PROVIDERS.googleAnalytics.measurementId;
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        gtag("js", new Date());
+        gtag("config", id);
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+        document.head.appendChild(s);
     }
 
     function init() {

@@ -12,37 +12,11 @@
 
   <!-- =========================================================
        ANALYTICS PROVIDERS
-       Раскомментируй нужный блок и вставь свой ключ/ID.
-       После этого поставь enabled: true в analytics/landing-tracking.js
+       Все три провайдера (Amplitude, YM, GA4) загружаются динамически
+       только после получения согласия пользователя.
+       Для подключения провайдера: вставь ID в PROVIDERS в analytics/landing-tracking.js
+       и поставь enabled: true. Никаких скриптов в HTML добавлять не нужно.
        ========================================================= -->
-
-  <!-- Amplitude SDK загружается динамически только после согласия (см. cookie-consent.js) -->
-
-  <!-- Яндекс.Метрика
-       1. Замени XXXXXXXX на свой ID счётчика
-       2. В analytics/landing-tracking.js: yandexMetrica.enabled = true, counterId = XXXXXXXX
-  <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();
-    for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
-    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
-    ym(XXXXXXXX,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true});
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
-  -->
-
-  <!-- Google Analytics 4
-       1. Замени G-XXXXXXXXXX на свой Measurement ID
-       2. В analytics/landing-tracking.js: googleAnalytics.enabled = true, measurementId = "G-XXXXXXXXXX"
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-XXXXXXXXXX");
-  </script>
-  -->
 
 </head>
 <body>
