@@ -1,0 +1,6 @@
+# Working/staging folders - never commit
+legal/
+
+# macOS
+.DS_Store
+._*
