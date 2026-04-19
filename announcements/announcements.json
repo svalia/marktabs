@@ -1,20 +1,6 @@
 {
   "announcements": [
     {
-      "id": "2026-04-20-mcp-agent",
-      "date": "2026-04-20",
-      "title": "New: MCP Agent support",
-      "body": "MarkTabs now supports MCP servers — connect Claude and other AI agents directly to your editor. Enable it in Settings.",
-      "title_ru": "Новое: поддержка MCP-агентов",
-      "body_ru": "MarkTabs теперь поддерживает MCP-серверы — подключайте Claude и других AI-агентов прямо к редактору. Включите в настройках.",
-      "image_url": null,
-      "cta_label": "Learn more",
-      "cta_label_ru": "Подробнее",
-      "cta_url": "https://svalia.github.io/marktabs",
-      "min_version": "1.0",
-      "max_version": null
-    },
-    {
       "id": "2026-04-19-welcome",
       "date": "2026-04-19",
       "title": "Welcome to MarkTabs 1.0",
