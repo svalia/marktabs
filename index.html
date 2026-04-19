@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MarkTabs — редактор для вайб-кодера</title>
+  <meta name="description" content="Все .md файлы в одном окне. Нативный macOS Markdown-редактор для AI-first профессионалов." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- =========================================================
+       ANALYTICS PROVIDERS
+       Раскомментируй нужный блок и вставь свой ключ/ID.
+       После этого поставь enabled: true в analytics/landing-tracking.js
+       ========================================================= -->
+
+  <!-- Amplitude Browser SDK (включён по умолчанию) -->
+  <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
+
+  <!-- Яндекс.Метрика
+       1. Замени XXXXXXXX на свой ID счётчика
+       2. В analytics/landing-tracking.js: yandexMetrica.enabled = true, counterId = XXXXXXXX
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+    ym(XXXXXXXX,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+  -->
+
+  <!-- Google Analytics 4
+       1. Замени G-XXXXXXXXXX на свой Measurement ID
+       2. В analytics/landing-tracking.js: googleAnalytics.enabled = true, measurementId = "G-XXXXXXXXXX"
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-XXXXXXXXXX");
+  </script>
+  -->
+
+</head>
+<body>
+
+  <!-- HEADER — app chrome -->
+  <header class="header">
+    <div class="header-inner">
+      <a class="logo" href="#">
+        <span class="logo-mark"></span>
+        MarkTabs
+      </a>
+      <nav class="nav">
+        <a href="#features" data-i18n="nav_features">Возможности</a>
+        <a href="#how" data-i18n="nav_how">Как работает</a>
+        <a href="#faq" data-i18n="nav_faq">FAQ</a>
+        <a href="#download" class="nav-cta" data-i18n="nav_download">Скачать</a>
+      </nav>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="ru">RU</button>
+        <span class="lang-sep">/</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title" data-i18n="hero_title">.md-редактор<br/><em>для вайб-кодера</em></h1>
+      <p class="hero-sub" data-i18n="hero_sub">Все .md файлы в одном окне — чтобы тратить мыслетопливо на работу, а не на окна</p>
+      <div class="hero-actions">
+        <a href="#download" class="btn-primary" data-i18n="hero_cta">Скачать бесплатно</a>
+        <span class="hero-meta" data-i18n="hero_meta">macOS 13+. Без подписки.</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="app-mockup" id="mockup">
+        <div class="app-window">
+          <div class="app-chrome">
+            <div class="traffic-lights">
+              <span class="tl tl-red"></span>
+              <span class="tl tl-yellow"></span>
+              <span class="tl tl-green"></span>
+            </div>
+            <span class="app-title-bar">MarkTabs</span>
+          </div>
+          <div class="app-body">
+            <div class="app-sidebar">
+              <div class="sidebar-section">
+                <div class="sidebar-header">
+                  <svg class="sidebar-icon" viewBox="0 0 10 10" fill="none"><path d="M2 3l3 4 3-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>AI Projects</span>
+                </div>
+                <div class="sidebar-item active">
+                  <svg class="sidebar-file-icon" viewBox="0 0 12 14" fill="none"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>
+                  product-spec.md
+                </div>
+                <div class="sidebar-item">
+                  <svg class="sidebar-file-icon" viewBox="0 0 12 14" fill="none"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>
+                  interviews.md
+                </div>
+                <div class="sidebar-item">
+                  <svg class="sidebar-file-icon" viewBox="0 0 12 14" fill="none"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>
+                  landing.md
+                </div>
+              </div>
+              <div class="sidebar-section">
+                <div class="sidebar-header">
+                  <svg class="sidebar-icon" viewBox="0 0 10 10" fill="none"><path d="M2 3l3 4 3-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Research</span>
+                </div>
+                <div class="sidebar-item">
+                  <svg class="sidebar-file-icon" viewBox="0 0 12 14" fill="none"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>
+                  context.md
+                </div>
+                <div class="sidebar-item">
+                  <svg class="sidebar-file-icon" viewBox="0 0 12 14" fill="none"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>
+                  analysis.md
+                </div>
+              </div>
+            </div>
+            <div class="app-right">
+              <div class="app-tabs">
+                <div class="app-tab app-tab-active">
+                  <svg class="tab-icon" viewBox="0 0 12 14" fill="none"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>
+                  <span>product-spec.md</span>
+                  <span class="tab-close">×</span>
+                </div>
+                <div class="app-tab">
+                  <svg class="tab-icon" viewBox="0 0 12 14" fill="none"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>
+                  <span>interviews.md</span>
+                  <span class="tab-dot"></span>
+                  <span class="tab-close">×</span>
+                </div>
+                <div class="app-tab">
+                  <svg class="tab-icon" viewBox="0 0 12 14" fill="none"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>
+                  <span>landing.md</span>
+                  <span class="tab-close">×</span>
+                </div>
+                <div class="app-tab">
+                  <svg class="tab-icon" viewBox="0 0 12 14" fill="none"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>
+                  <span>context.md</span>
+                  <span class="tab-close">×</span>
+                </div>
+                <div class="tab-plus">+</div>
+              </div>
+            <div class="app-editor">
+              <div class="editor-line editor-h1"># Product Specification</div>
+              <div class="editor-line editor-blank"></div>
+              <div class="editor-line editor-h2">## Overview</div>
+              <div class="editor-line editor-text">MarkTabs is a native macOS Markdown editor</div>
+              <div class="editor-line editor-text-dim">for AI-first professionals who work with</div>
+              <div class="editor-line editor-text-dim">multiple <span class="editor-code">.md</span> files simultaneously.</div>
+              <div class="editor-line editor-blank"></div>
+              <div class="editor-line editor-h2">## Core Jobs</div>
+              <div class="editor-line editor-list">- Switch between projects instantly</div>
+              <div class="editor-line editor-list">- Read AI output without syntax noise</div>
+              <div class="editor-line editor-list">- Keep context organized and accessible</div>
+              <div class="editor-line editor-blank"></div>
+              <div class="editor-cursor"></div>
+            </div>
+            </div><!-- /.app-right -->
+          </div><!-- /.app-body -->
+        </div><!-- /.app-window -->
+      </div><!-- /.app-mockup -->
+      <div class="hero-eyebrow">
+        <p class="eyebrow-statement" data-i18n="hero_eyebrow_statement"><span class="eyebrow-md">.md</span> стал рабочим форматом AI-эпохи</p>
+        <p class="eyebrow-detail" data-i18n="hero_eyebrow_detail">Нейронка генерирует его <strong>быстрее и дешевле</strong>, чем .doc или .pdf — и читает тоже</p>
+      </div>
+    </div><!-- /.hero-visual -->
+  </section>
+
+  <!-- DOCUMENT — rendered .md -->
+  <main class="document">
+
+    <!-- INTERACTIVE DEMO -->
+    <section class="doc-section" id="demo">
+      <h2 class="md-h2" data-i18n="demo_title">Работа со всеми файлами проекта</h2>
+      <p class="md-p" data-i18n="demo_desc">Добавив папку проекта в избранное, все файлы доступны из сайдбара. Открывай нужные, переключайся одним кликом — все вкладки в одном окне.</p>
+
+      <div class="iapp" id="iapp">
+        <!-- chrome -->
+        <div class="iapp-chrome">
+          <div class="traffic-lights">
+            <span class="tl tl-red"></span>
+            <span class="tl tl-yellow"></span>
+            <span class="tl tl-green"></span>
+          </div>
+          <div class="iapp-tabs-wrap" id="iappTabs"></div>
+          <div class="iapp-controls">
+            <button class="cmdr-btn" id="cmdRBtn" title="Toggle Edit / Read mode">
+              <span class="cmdr-key">⌘</span><span class="cmdr-key">R</span>
+            </button>
+            <span class="cmdr-mode-badge" id="modeBadge">Edit</span>
+          </div>
+        </div>
+        <!-- body -->
+        <div class="iapp-body">
+          <div class="iapp-sidebar-panel" id="iappSidebar"></div>
+          <div class="iapp-editor-panel">
+            <div class="iapp-edit-content" id="iappEditContent"></div>
+            <div class="iapp-read-content" id="iappReadContent" style="display:none"></div>
+          </div>
+        </div>
+        <!-- hint -->
+        <div class="iapp-hint">
+          <span class="hint-key">⌘R</span>
+          <span data-i18n="demo_hint">— переключить режим просмотра</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="doc-section" id="features">
+      <h2 class="md-h2" data-i18n="features_title">Что ты получишь</h2>
+      <div class="features-list">
+
+        <!-- 1: Tabs -->
+        <div class="feature-item">
+          <div class="feature-text">
+            <div class="feature-label">## tabs</div>
+            <h3 data-i18n="f1_title">Все проекты рядом</h3>
+            <p data-i18n="f1_desc">Открытые файлы живут во вкладках, переключение одним кликом или <code>Cmd+цифра</code></p>
+          </div>
+          <div class="feature-anim">
+            <div class="fat-bar">
+              <div class="fat-tab fat-t1"><svg class="fat-ico" viewBox="0 0 12 14" fill="none"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>spec.md<span class="fat-ind"></span></div>
+              <div class="fat-tab fat-t2"><svg class="fat-ico" viewBox="0 0 12 14" fill="none"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>interviews.md<span class="fat-ind"></span></div>
+              <div class="fat-tab fat-t3"><svg class="fat-ico" viewBox="0 0 12 14" fill="none"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>landing.md<span class="fat-ind"></span></div>
+              <div class="fat-plus">+</div>
+            </div>
+            <div class="fat-body">
+              <div class="fat-content fat-c1">
+                <div class="fat-line fat-lh1"># Product Spec</div>
+                <div class="fat-line fat-lh2">## Overview</div>
+                <div class="fat-line fat-lp">A native macOS Markdown editor</div>
+                <div class="fat-line fat-lp fat-ldim">for AI-first professionals</div>
+              </div>
+              <div class="fat-content fat-c2">
+                <div class="fat-line fat-lh1"># Interview Notes</div>
+                <div class="fat-line fat-lh2">## Key Insights</div>
+                <div class="fat-line fat-lp">Users want one window for all</div>
+                <div class="fat-line fat-lp fat-ldim">their .md files</div>
+              </div>
+              <div class="fat-content fat-c3">
+                <div class="fat-line fat-lh1"># Landing Page</div>
+                <div class="fat-line fat-lh2">## Hero Section</div>
+                <div class="fat-line fat-lp">.md-редактор для вайб-кодера</div>
+                <div class="fat-line fat-lp fat-ldim">Все файлы в одном окне</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2: Read mode -->
+        <div class="feature-item">
+          <div class="feature-text">
+            <div class="feature-label">## read</div>
+            <h3 data-i18n="f2_title">Read mode по требованию</h3>
+            <p data-i18n="f2_desc">Документ от AI читается как документ, а не как исходник. <code>Cmd+R</code> туда-обратно</p>
+          </div>
+          <div class="feature-anim">
+            <div class="far-layer far-raw">
+              <div class="far-line far-lh1"># Interview Notes</div>
+              <div class="far-line far-lsep">---</div>
+              <div class="far-line far-lh2">## Key Insights</div>
+              <div class="far-line far-lp">**Users want** one window for all</div>
+              <div class="far-line far-lp">`.md` files — no more switching</div>
+              <div class="far-line far-lp far-ldim">between windows and apps</div>
+            </div>
+            <div class="far-layer far-rendered">
+              <div class="far-r-h1">Interview Notes</div>
+              <div class="far-r-hr"></div>
+              <div class="far-r-h2">Key Insights</div>
+              <div class="far-r-p"><strong>Users want</strong> one window for all .md files — no more switching between windows</div>
+            </div>
+            <div class="far-badge">
+              <span class="far-key">⌘</span><span class="far-key">R</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3: Sidebar -->
+        <div class="feature-item">
+          <div class="feature-text">
+            <div class="feature-label">## sidebar</div>
+            <h3 data-i18n="f3_title">Sidebar вместо Finder</h3>
+            <p data-i18n="f3_desc">Добавь рабочие папки один раз, дерево .md файлов всегда под рукой</p>
+          </div>
+          <div class="feature-anim">
+            <div class="fasb-panel">
+              <div class="fasb-section">FOLDERS</div>
+              <div class="fasb-folder">
+                <div class="fasb-hdr"><span class="fasb-arr fasb-arr-1">▶</span> AI Projects</div>
+                <div class="fasb-files fasb-files-1">
+                  <div class="fasb-file fasb-f1">product-spec.md</div>
+                  <div class="fasb-file fasb-f2">interviews.md</div>
+                  <div class="fasb-file fasb-f3">landing.md</div>
+                </div>
+              </div>
+              <div class="fasb-folder">
+                <div class="fasb-hdr"><span class="fasb-arr fasb-arr-2">▶</span> Research</div>
+                <div class="fasb-files fasb-files-2">
+                  <div class="fasb-file fasb-f4">context.md</div>
+                  <div class="fasb-file fasb-f5">notes.md</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4: Save -->
+        <div class="feature-item">
+          <div class="feature-text">
+            <div class="feature-label">## save</div>
+            <h3 data-i18n="f4_title">Не потеряешь ни байта</h3>
+            <p data-i18n="f4_desc">Точка на вкладке если не сохранено. Диалог перед закрытием. Вкладки восстанавливаются после перезапуска</p>
+          </div>
+          <div class="feature-anim">
+            <div class="fasv-bar">
+              <div class="fasv-tab fasv-active">
+                <svg class="fasv-ico" viewBox="0 0 12 14" fill="none"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>
+                interviews.md<span class="fasv-dot"></span>
+              </div>
+              <div class="fasv-tab">
+                <svg class="fasv-ico" viewBox="0 0 12 14" fill="none"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>
+                landing.md
+              </div>
+            </div>
+            <div class="fasv-stage">
+              <span class="fasv-autosave">autosave через 2 сек...</span>
+              <span class="fasv-saved">сохранено ✓</span>
+              <span class="fasv-cmds"><span class="fasv-key">⌘</span><span class="fasv-key">S</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5: AI Agent -->
+        <div class="feature-item">
+          <div class="feature-text">
+            <div class="feature-label">## ai-agent</div>
+            <h3 data-i18n="f5_title">Видишь, что изменил агент</h3>
+            <p data-i18n="f5_desc">Строки, затронутые AI, подсвечиваются жёлтым. Принимаешь или редактируешь без сюрпризов</p>
+          </div>
+          <div class="feature-anim">
+            <div class="fai-editor">
+              <div class="fai-line">## Продуктовые цели Q3</div>
+              <div class="fai-line">Запустить публичную бету до 15 июля.</div>
+              <div class="fai-line fai-l3 fai-hl">Собрать 200 пользователей за первый месяц.</div>
+              <div class="fai-line fai-l4 fai-hl">Ключевая метрика - retention D7 &gt; 40%.</div>
+              <div class="fai-line">Локализация: RU, EN, DE.</div>
+              <div class="fai-line">---</div>
+              <div class="fai-line fai-l7 fai-hl">Приоритет: платящие &gt; DAU.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6: Drag & Drop -->
+        <div class="feature-item">
+          <div class="feature-text">
+            <div class="feature-label">## drag-drop</div>
+            <h3 data-i18n="f6_title">Кидай файлы прямо в окно</h3>
+            <p data-i18n="f6_desc">Перетащи .md из Finder — откроется как новая вкладка. Можно кидать сразу несколько</p>
+          </div>
+          <div class="feature-anim">
+            <div class="fdd-scene">
+              <div class="fdd-tabs-bar">
+                <div class="fdd-tab">interviews.md</div>
+                <div class="fdd-tab fdd-tab-new">notes.md</div>
+                <div class="fdd-tab fdd-plus">+</div>
+              </div>
+              <div class="fdd-body">Перетащи .md файлы сюда</div>
+              <div class="fdd-overlay"></div>
+              <div class="fdd-ghost">
+                <svg viewBox="0 0 12 14" fill="none" width="20" height="24"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>
+                <span class="fdd-ghost-name">notes.md</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7: Checkboxes -->
+        <div class="feature-item">
+          <div class="feature-text">
+            <div class="feature-label">## checkboxes</div>
+            <h3 data-i18n="f7_title">Чеклисты работают в Read mode</h3>
+            <p data-i18n="f7_desc">Ставишь галочки прямо в рендере без переключения в редактор. Статус сохраняется в файл</p>
+          </div>
+          <div class="feature-anim">
+            <div class="fcb-doc">
+              <div class="fcb-h">## Sprint 24 - задачи</div>
+              <div class="fcb-row"><span class="fcb-box fcb-b1"></span><span class="fcb-label fcb-l1">Написать тесты для auth</span></div>
+              <div class="fcb-row"><span class="fcb-box fcb-b2"></span><span class="fcb-label fcb-l2">Обновить зависимости</span></div>
+              <div class="fcb-row"><span class="fcb-box fcb-b3"></span><span class="fcb-label fcb-l3">Review PR #48</span></div>
+              <div class="fcb-row"><span class="fcb-box fcb-b4"></span><span class="fcb-label fcb-l4">Задеплоить на staging</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8: MCP -->
+        <div class="feature-item">
+          <div class="feature-text">
+            <div class="feature-label">## mcp</div>
+            <h3 data-i18n="f8_title">Claude видит твои вкладки</h3>
+            <p data-i18n="f8_desc">Встроенный MCP-сервер: Claude Desktop и Claude Code получают доступ к открытым файлам напрямую</p>
+          </div>
+          <div class="feature-anim">
+            <div class="fmcp-scene">
+              <div class="fmcp-phase-a">
+                <div class="fmcp-chat">
+                  <div class="fmcp-msg fmcp-u">Перепиши цели Q3 короче</div>
+                  <div class="fmcp-msg fmcp-ai">
+                    <div class="fmcp-dots">
+                      <span class="fmcp-dot"></span>
+                      <span class="fmcp-dot"></span>
+                      <span class="fmcp-dot"></span>
+                    </div>
+                    <span class="fmcp-resp">Готово — создал q3-brief.md</span>
+                  </div>
+                </div>
+              </div>
+              <div class="fmcp-phase-b">
+                <div class="fmcp-app-bar">
+                  <div class="fmcp-app-tab">goals.md</div>
+                  <div class="fmcp-app-tab fmcp-app-tab-new">q3-brief.md</div>
+                </div>
+                <div class="fmcp-app-body">
+                  <div class="fmcp-app-title"># Цели Q3</div>
+                  <div class="fmcp-app-para">Публичная бета — 15 июля</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9: iOS & iPad (soon) -->
+        <div class="feature-item">
+          <div class="feature-text">
+            <div class="feature-label">## mobile</div>
+            <h3 data-i18n="f9_title">iOS и iPad</h3>
+            <p data-i18n="f9_desc">Те же вкладки и Read mode на iPhone и iPad. Синхронизация через iCloud</p>
+          </div>
+          <div class="feature-anim">
+            <span class="feat-soon-badge" data-i18n="feat_soon">скоро</span>
+            <div class="fios-scene">
+              <div class="fios-phone">
+                <div class="fios-screen">
+                  <div class="fios-tab-bar">
+                    <div class="fios-tab">plan.md</div>
+                    <div class="fios-tab fios-tab-active">notes.md</div>
+                  </div>
+                  <div class="fios-body">
+                    <div class="fios-h"># Заметки</div>
+                    <div class="fios-p">Идея: shortcut...</div>
+                    <div class="fios-p fios-dim">Продолжить позже</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fios-pad">
+                <div class="fios-screen">
+                  <div class="fios-tab-bar">
+                    <div class="fios-tab">plan.md</div>
+                    <div class="fios-tab fios-tab-active">notes.md</div>
+                  </div>
+                  <div class="fios-body-wrap">
+                    <div class="fios-sb">
+                      <div class="fios-sb-item">Projects</div>
+                      <div class="fios-sb-item fios-sb-act">notes.md</div>
+                    </div>
+                    <div class="fios-body">
+                      <div class="fios-h"># Заметки</div>
+                      <div class="fios-p">Идея: shortcut...</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10: Split View (soon) -->
+        <div class="feature-item">
+          <div class="feature-text">
+            <div class="feature-label">## split</div>
+            <h3 data-i18n="f10_title">Split View</h3>
+            <p data-i18n="f10_desc">Два документа рядом: слева пишешь, справа видишь результат или другой файл</p>
+          </div>
+          <div class="feature-anim">
+            <span class="feat-soon-badge" data-i18n="feat_soon">скоро</span>
+            <div class="fspl-scene">
+              <div class="fspl-left">
+                <div class="fspl-bar">plan.md</div>
+                <div class="fspl-lines">
+                  <div class="fspl-line">## Sprint 24</div>
+                  <div class="fspl-line">- Написать тесты</div>
+                  <div class="fspl-line">- Обновить deps</div>
+                  <div class="fspl-line">- Review PR</div>
+                </div>
+              </div>
+              <div class="fspl-divider"></div>
+              <div class="fspl-right">
+                <div class="fspl-bar">notes.md</div>
+                <div class="fspl-lines">
+                  <div class="fspl-line fspl-lh"># Sprint 24</div>
+                  <div class="fspl-line">• Написать тесты</div>
+                  <div class="fspl-line">• Обновить deps</div>
+                  <div class="fspl-line">• Review PR</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11: Pin Tab (soon) -->
+        <div class="feature-item">
+          <div class="feature-text">
+            <div class="feature-label">## pin</div>
+            <h3 data-i18n="f11_title">Закреплённые вкладки</h3>
+            <p data-i18n="f11_desc">Правый клик — Закрепить. Вкладка сжимается до иконки и всегда остаётся слева</p>
+          </div>
+          <div class="feature-anim">
+            <span class="feat-soon-badge" data-i18n="feat_soon">скоро</span>
+            <div class="fpin-scene">
+              <div class="fpin-bar">
+                <div class="fpin-tab fpin-pinned">
+                  <svg viewBox="0 0 12 14" fill="none" width="9" height="10"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>
+                </div>
+                <div class="fpin-tab">
+                  <svg viewBox="0 0 12 14" fill="none" width="9" height="10"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>
+                  <span class="fpin-target-lbl">notes.md</span>
+                </div>
+                <div class="fpin-tab">
+                  <svg viewBox="0 0 12 14" fill="none" width="9" height="10"><path d="M2 0h6l3 3v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1"/><path d="M8 0v3h3" stroke="currentColor" stroke-width="1"/></svg>
+                  <span>readme.md</span>
+                </div>
+              </div>
+              <div class="fpin-menu">
+                <div class="fpin-mi">Закрыть</div>
+                <div class="fpin-mi">Закрыть остальные</div>
+                <div class="fpin-sep"></div>
+                <div class="fpin-mi fpin-mi-hl">Закрепить</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RECOGNIZE YOURSELF -->
+    <section class="doc-section" id="how">
+      <h2 class="md-h2" data-i18n="rec_title">Узнаёшь себя?</h2>
+      <p class="md-p" data-i18n="rec_sub">Ты хочешь работать с AI-ассистентом предметно, а не вручную собирать контекст перед каждым разговором?</p>
+      <ul class="pains-list">
+        <li data-i18n="pain1">Пять проектов — пять окон. <code>Cmd+Tab</code> по кругу, пока не найдёшь нужное?</li>
+        <li data-i18n="pain2">AI прислал документ — а в редакторе это стена со звёздочками, решётками и обратными кавычками?</li>
+        <li data-i18n="pain3">Копируешь куски из старых документов в новый чат, потому что ассистент не знает, что ты уже решил неделю назад?</li>
+        <li data-i18n="pain4">VS Code — для кода, Obsidian — целый vault, а просто открыть несколько .md — нечем?</li>
+      </ul>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="doc-section">
+      <h2 class="md-h2" data-i18n="how_title">Как это работает</h2>
+      <ol class="steps-ol">
+        <li>
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3 data-i18n="step1_title">Открой файлы</h3>
+            <p data-i18n="step1_desc">Через File &gt; Open или клик в sidebar — все появляются как вкладки в одном окне. Вместо множества окон с открытыми .md файлами — одно окно с удобной навигацией по вкладкам.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3 data-i18n="step2_title">Читай в чистом виде</h3>
+            <p data-i18n="step2_desc"><code>Cmd+R</code> — документ рендерится мгновенно: заголовки, таблицы, код, ссылки кликабельны. Читаешь как текст, не продираешься сквозь синтаксис.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3 data-i18n="step3_title">Правь без смены инструмента</h3>
+            <p data-i18n="step3_desc"><code>Cmd+R</code> снова — вернулся в edit mode. <code>Cmd+S</code> сохраняет в любом режиме. Всё в одном окне, ничего не теряешь.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- OUTCOMES -->
+    <section class="doc-section">
+      <h2 class="md-h2" data-i18n="out_title">К чему ты придёшь</h2>
+      <ul class="outcomes-ul">
+        <li data-i18n="out1">Не будешь тратить мыслетопливо на управление окнами — только на содержание документов</li>
+        <li data-i18n="out2">Рабочий контекст под контролем, а не разбросан по пяти местам</li>
+        <li data-i18n="out3">Перестанешь раздражаться каждый раз, когда AI присылает документ с синтаксисом</li>
+        <li data-i18n="out4">Все открытые AI-проекты видны сразу — переключение за одно действие</li>
+        <li data-i18n="out5">Накопленный контекст лежит в .md файлах, структурированно, рядом</li>
+      </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section class="doc-section" id="faq">
+      <h2 class="md-h2" data-i18n="faq_title">Есть сомнения?</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-q" data-i18n="faq1_q">"Ещё один редактор, буду разбираться неделю"</summary>
+          <div class="faq-a" data-i18n="faq1_a">Установка занимает минуту. Нет аккаунта, нет vault, нет миграции. Перетащи файл, открой папку — всё.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q" data-i18n="faq2_q">"Бесплатно, без App Store — что-то не то"</summary>
+          <div class="faq-a" data-i18n="faq2_a">Это целевое решение, не демо. Распространение через DMG с лендинга — быстрее и без ограничений App Store. Никакого облака, никаких данных на серверах.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q" data-i18n="faq3_q">"Разве VS Code не справляется?"</summary>
+          <div class="faq-a" data-i18n="faq3_a">Справляется, но это инструмент для кода. Он не даёт читать документ в чистом виде, extensions для Markdown — сторонние, интерфейс заточен под разработку. MarkTabs — для документов. Нет лишнего.</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- COMPETITORS -->
+    <section class="doc-section">
+      <h2 class="md-h2" data-i18n="comp_title">Почему не VS Code, Obsidian или TextEdit</h2>
+      <div class="comp-list">
+        <div class="comp-row">
+          <div class="comp-name">VS Code</div>
+          <div class="comp-why" data-i18n="comp1">Перегружен для документов: панели, extensions, developer-контекст. MarkTabs — только .md, только работа с текстом.</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-name">Obsidian</div>
+          <div class="comp-why" data-i18n="comp2">Vault-модель, синхронизация, плагины. Если нужна база знаний — Obsidian. Если нужно открыть несколько файлов и работать — MarkTabs.</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-name">TextEdit</div>
+          <div class="comp-why" data-i18n="comp3">Нет вкладок, нет sidebar, нет Markdown рендеринга. MarkTabs закрывает нишу, которую macOS оставила пустой.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section class="doc-section" id="download">
+      <div class="download-block">
+        <h2 data-i18n="dl_title">Готов попробовать?</h2>
+        <p data-i18n="dl_sub">Бесплатно. Нативный macOS. Без аккаунта.</p>
+        <a href="#" class="btn-primary btn-large" data-i18n="dl_cta">Скачать MarkTabs</a>
+        <span class="dl-meta" data-i18n="dl_meta">macOS 13 Ventura и выше · DMG · ~8 MB</span>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span class="logo">MarkTabs</span>
+    <span class="footer-copy" data-i18n="footer_copy">© 2026 MarkTabs. Сделано на macOS, для macOS.</span>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="analytics/landing-tracking.js"></script>
+</body>
+</html>
