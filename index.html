@@ -14,13 +14,14 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
   <link rel="stylesheet" href="style.css" />
 
-  <!-- =========================================================
-       ANALYTICS PROVIDERS
-       Все три провайдера (Amplitude, YM, GA4) загружаются динамически
-       только после получения согласия пользователя.
-       Для подключения провайдера: вставь ID в PROVIDERS в analytics/landing-tracking.js
-       и поставь enabled: true. Никаких скриптов в HTML добавлять не нужно.
-       ========================================================= -->
+  <!-- GA4: загружаем библиотеку статично для верификации тега Google.
+       gtag('config') вызывается только после cookie-consent в landing-tracking.js. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC8EN25QSP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
 
 </head>
 <body>

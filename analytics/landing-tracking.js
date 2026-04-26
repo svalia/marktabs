@@ -122,16 +122,11 @@
 
     function loadGoogleAnalytics() {
         if (!PROVIDERS.googleAnalytics.enabled || PROVIDERS.googleAnalytics.measurementId === "G-XXXXXXXXXX") return;
-        if (typeof gtag !== "undefined") return;
         var id = PROVIDERS.googleAnalytics.measurementId;
+        // gtag.js уже загружен статично в <head>, только активируем конфиг после consent
         window.dataLayer = window.dataLayer || [];
-        window.gtag = function () { window.dataLayer.push(arguments); };
-        gtag("js", new Date());
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
         gtag("config", id);
-        var s = document.createElement("script");
-        s.async = true;
-        s.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
-        document.head.appendChild(s);
     }
 
     function init() {
