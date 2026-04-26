@@ -1,3 +1,18 @@
 {
-  "announcements": []
+  "announcements": [
+    {
+      "id": "2026-04-26-v1.0.1-sidebar-sync",
+      "date": "2026-04-26",
+      "title": "MarkTabs 1.0.1 - sidebar now stays in sync",
+      "body": "Renamed a file in Finder? The sidebar updates instantly. Deleted a folder? Gone from the tree right away. Added files? They appear without a manual refresh. Also: sidebar width is now remembered between sessions, rename files directly from the tab or sidebar context menu, and copy any file or folder path in one click.",
+      "title_ru": "MarkTabs 1.0.1 - сайдбар теперь всегда актуален",
+      "body_ru": "Переименовали файл в Finder - сайдбар обновился сразу. Удалили папку - исчезла из дерева без перезагрузки. Добавили файлы - появились мгновенно. Плюс: ширина сайдбара теперь сохраняется между сессиями, переименовывать файлы можно прямо из меню вкладки или сайдбара, а путь до любого файла или папки копируется в один клик.",
+      "image_url": null,
+      "cta_label": "Download 1.0.1",
+      "cta_label_ru": "Скачать 1.0.1",
+      "cta_url": "https://svalia.github.io/marktabs",
+      "min_version": null,
+      "max_version": null
+    }
+  ]
 }
