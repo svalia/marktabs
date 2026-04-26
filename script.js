@@ -82,7 +82,7 @@ const T = {
     dl_title:      'Готов попробовать?',
     dl_sub:        'Бесплатно. Нативный macOS. Без аккаунта.',
     dl_cta:        'Скачать MarkTabs',
-    dl_meta:       'macOS 13 Ventura и выше · DMG · ~8 MB',
+    dl_meta:       'macOS 13 Ventura и выше · DMG · ~3.8 MB',
     dl_disclaimer: 'Нажимая «Скачать», вы принимаете условия <a href="legal/eula/">Лицензионного соглашения</a> и <a href="legal/privacy/">Политики конфиденциальности</a>.',
     footer_copy:   '© 2026 MarkTabs. Сделано на macOS, для macOS.',
   },
@@ -160,7 +160,7 @@ const T = {
     dl_title:      'Ready to try?',
     dl_sub:        'Free. Native macOS. No account.',
     dl_cta:        'Download MarkTabs',
-    dl_meta:       'macOS 13 Ventura and above · DMG · ~8 MB',
+    dl_meta:       'macOS 13 Ventura and above · DMG · ~3.8 MB',
     dl_disclaimer: 'By clicking "Download", you accept the terms of the <a href="legal/eula/">End User License Agreement</a> and the <a href="legal/privacy/">Privacy Policy</a>.',
     footer_copy:   '© 2026 MarkTabs. Built on macOS, for macOS.',
   }
@@ -242,8 +242,8 @@ if (mockup) {
   function lerp(a, b, t) { return a + (b - a) * t; }
 
   function animate() {
-    currentX = lerp(currentX, targetX, 0.08);
-    currentY = lerp(currentY, targetY, 0.08);
+    currentX = lerp(currentX, targetX, 0.14);
+    currentY = lerp(currentY, targetY, 0.14);
 
     const tiltY =  (currentX / MAX_X) * TILT_Y;
     const tiltX = -(currentY / MAX_Y) * TILT_X;
@@ -275,29 +275,6 @@ if (mockup) {
   });
 }
 
-// =============================================
-// SCROLL REVEAL
-// =============================================
-const revealEls = document.querySelectorAll(
-  '.feature-item, .pains-list li, .steps-ol li, .outcomes-ul li, .faq-item, .comp-row, .doc-section'
-);
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-revealEls.forEach((el, i) => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = `opacity 0.5s ${i * 0.04}s ease, transform 0.5s ${i * 0.04}s ease`;
-  observer.observe(el);
-});
 
 // =============================================
 // INTERACTIVE APP DEMO

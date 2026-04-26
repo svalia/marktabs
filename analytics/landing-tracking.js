@@ -28,8 +28,8 @@
             counterId: 108669967            // заменить на ID счётчика из Яндекс.Метрики (число)
         },
         googleAnalytics: {
-            enabled: false,
-            measurementId: "G-XXXXXXXXXX"   // заменить на Measurement ID из GA4
+            enabled: true,
+            measurementId: "G-SC8EN25QSP"
         }
     };
 
